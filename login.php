@@ -26,12 +26,12 @@
 
                                         <div class="form-outline mb-4">
                                             <label class="form-label" for="">Login</label>
-                                            <input type="email" class="form-control form-control-lg" />
+                                            <input type="email" id="form2Example17" class="form-control form-control-lg" />
                                         </div>
 
                                         <div class="form-outline mb-4">
                                             <label class="form-label">Senha</label>
-                                            <input type="password" class="form-control form-control-lg" />
+                                            <input type="password" id="form2Example27" class="form-control form-control-lg" />
                                         </div>
 
 

@@ -28,6 +28,7 @@
                     <div id="passwordHelp" class="form-text">Sua senha nunca será compartilhada com outros.</div>
                 </div>
                 <input type="submit" name="botao" value="Cadastrar" class="btn btn-primary"></input>
+                <a href="login.php" value="Cadastrar" class="btn btn-primary">Fazer Login</a>
             </form>
         </div>
     </section>
@@ -38,12 +39,14 @@
         $login = $_POST['login'];
         $senha = $_POST['senha'];
 
+        $senha_md5 = md5($senha);
+
         $query_check = "SELECT * FROM usuario WHERE login = '$login'";
         $result_check = mysqli_query($con, $query_check);
         if (mysqli_num_rows($result_check) > 0) {
             echo "<script>usuarioJaExiste();</script>";
         } else {
-            $query = "INSERT INTO usuario (login, senha) VALUES ('$login', '$senha')";
+            $query = "INSERT INTO usuario (login, senha) VALUES ('$login', '$senha_md5')";
             $result = mysqli_query($con, $query);
 
             if (!$result) {

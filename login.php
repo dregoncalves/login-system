@@ -7,7 +7,9 @@ if (@$_REQUEST['botao']) {
     $login = $_POST["login"];
     $senha = $_POST["senha"];
 
-    $query_consultar = "SELECT * FROM usuario WHERE login = '$login' AND senha = '$senha';";
+    $senha_md5 = md5($senha);
+
+    $query_consultar = "SELECT * FROM usuario WHERE login = '$login' AND senha = '$senha_md5';";
     $result_consultar = mysqli_query($con, $query_consultar);
 
     while ($coluna = mysqli_fetch_array($result_consultar)) {

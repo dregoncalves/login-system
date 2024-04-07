@@ -4,4 +4,3 @@
 4) O CRUD chamar de cadastrar.php
 5) O relatorio chamar de relatorio.php
 6) Formatar a tela de login com CSS
-teste

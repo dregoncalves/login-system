@@ -1,3 +1,29 @@
+<?php
+include('config.php');
+session_start();
+
+if (@$_REQUEST['botao']) {
+
+    $login = $_POST["login"];
+    $senha = $_POST["senha"];
+
+    $query_consultar = "SELECT * FROM usuario WHERE login = '$login' AND senha = '$senha';";
+    $result_consultar = mysqli_query($con, $query_consultar);
+
+    while ($coluna = mysqli_fetch_array($result_consultar)) {
+        $_SESSION["id_usuario"] = $coluna["id"];
+        $_SESSION["nome_usuario"] = $coluna["login"];
+        $_SESSION["nivel_usuario"] = $coluna["nivel"];
+
+        $niv = $coluna['nivel'];
+        if ($niv == "USER" || $niv == "ADM") {
+            header("Location: menu.php");
+            exit;
+        } 
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -22,22 +48,23 @@
                             <div class="col-md-6 col-lg-7 d-flex align-items-center">
                                 <div class="card-body p-4 p-lg-5 text-black">
 
-                                    <form class="justify-content-center">
+                                    <form action="#" method="post" class="justify-content-center">
 
                                         <div class="form-outline mb-4">
-                                            <label class="form-label" for="">Login</label>
-                                            <input type="email" class="form-control form-control-lg" />
+                                            <label class="form-label" for="login">Login</label>
+                                            <input type="email" id="login" name="login" class="form-control form-control-lg" />
                                         </div>
 
                                         <div class="form-outline mb-4">
-                                            <label class="form-label">Senha</label>
-                                            <input type="password" class="form-control form-control-lg" />
+                                            <label class="form-label" for="senha">Senha</label>
+                                            <input type="password" id="senha" name="senha" class="form-control form-control-lg" />
                                         </div>
-
 
                                         <div class="mb-4 d-flex ">
-                                            <button type="button" style="background-color: #CFB29F; margin-left: 25%;" class="btn btn-lg ">Login</button>
-                                            <button type="button" style="background-color: #F9E5D7; margin-left: 60px;" class="btn btn-lg pl-2">Cadastrar</button>
+                                            <input type="submit" name="botao" value="Login" style="background-color: #CFB29F; margin-left: 25%;" class="btn btn-lg"></input>
+                                            <button type="button" style="background-color: #F9E5D7; margin-left: 60px;" class="btn btn-lg pl-2">
+                                                <a href="cadastro.php" style="color: inherit; text-decoration: none;">Cadastrar</a>
+                                            </button>
                                         </div>
                                     </form>
 
@@ -49,7 +76,9 @@
             </div>
         </div>
     </section>
-
 </body>
+
+
+
 
 </html>

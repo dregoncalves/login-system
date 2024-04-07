@@ -43,7 +43,7 @@ if (@$_REQUEST['botao']) {
                     <div class="card" style="border-radius: 1rem;">
                         <div class="row g-0">
                             <div class="col-md-6 col-lg-5 d-none d-md-block">
-                                <img src="a.jpg" alt="Pangaré" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />
+                                <img src="imgs/a.jpg" alt="Pangaré" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />
                             </div>
                             <div class="col-md-6 col-lg-7 d-flex align-items-center">
                                 <div class="card-body p-4 p-lg-5 text-black">
@@ -52,7 +52,7 @@ if (@$_REQUEST['botao']) {
 
                                         <div class="form-outline mb-4">
                                             <label class="form-label" for="login">Login</label>
-                                            <input type="email" id="login" name="login" class="form-control form-control-lg" />
+                                            <input type="text" id="login" name="login" class="form-control form-control-lg" />
                                         </div>
 
                                         <div class="form-outline mb-4">

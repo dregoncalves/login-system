@@ -37,7 +37,6 @@
 
                                         <div class="mb-4 d-flex ">
                                             <button type="button" style="background-color: #CFB29F; margin-left: 25%;" class="btn btn-lg ">Login</button>
-                                            <button type="button" style="background-color: #F9E5D7; margin-left: 60px;" class="btn btn-lg pl-2">Cadastrar</button>
                                         </div>
                                     </form>
 

@@ -1,6 +1,0 @@
-1) Usar o mesmo banco de dados que criamos hoje.
-2) Na tela de login, colocar um link para cadastrar usuarios novos
-3) Criar o CRUD para cadastrar os novos usuarios (na senha, incluir MD5)
-4) O CRUD chamar de cadastrar.php
-5) O relatorio chamar de relatorio.php
-6) Formatar a tela de login com CSS

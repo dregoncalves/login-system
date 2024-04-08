@@ -46,7 +46,7 @@
         if (mysqli_num_rows($result_check) > 0) {
             echo "<script>usuarioJaExiste();</script>";
         } else {
-            $query = "INSERT INTO usuario (login, senha) VALUES ('$login', '$senha_md5')";
+            $query = "INSERT INTO usuario (login, senha, nivel) VALUES ('$login', '$senha_md5', 'USER')";
             $result = mysqli_query($con, $query);
 
             if (!$result) {

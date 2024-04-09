@@ -13,7 +13,15 @@
     <script src="main.js"></script>
     <?php
     include('config.php');
-    $query = "SELECT * FROM usuario WHERE id =" . $_REQUEST['id'] . ";";
+
+    #VERIFICAÇÃO PADRÃO PARA VER SE USUARIO É ADM
+    session_start();
+    if (!isset($_SESSION['id_usuario']) || $_SESSION['nivel_usuario'] !== 'ADM') {
+        header("Location: login.php");
+        exit;
+    }
+
+    $query = "SELECT * FROM usuario WHERE id =" . $_REQUEST['id'];
 
     $result = $con->query($query);
     $row = $result->fetch_object();
@@ -26,28 +34,31 @@
                     <img src="imgs/360_F_561584417_2mWFiThqNVkc869p5CJcsZwMaf4PdVvv.jpg" class="img-fluid" alt="..." style="border-radius: 20px; margin-top: 40px;">
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Login</label>
-                    <input type="text" name="login" class="form-control" value="<?php echo $row->login; ?>">
+                    <label for="exampleInputEmail1" class="form-label">Novo Login</label>
+                    <input type="text" name="login" class="form-control" value="" placeholder="<?php echo $row->login; ?>">
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Senha</label>
-                    <input type="password" name="senha" class="form-control" value="<?php echo $row->senha; ?>">
+                    <label for="exampleInputPassword1" class="form-label">Nova Senha</label>
+                    <input type="text" name="senha" class="form-control" value="" placeholder="<?php echo $row->senha; ?>">
                     <div id="passwordHelp" class="form-text">Sua senha nunca será compartilhada com outros.</div>
                 </div>
-                <div class="mb-3">
-                    <select class="form-control" id="exampleFormControlSelect1">
-                        <option selected>Nível</option>
-                        <option>ADM</option>
-                        <option>USER</option>
-                    </select>
-                </div>
-                <div class="text-center">
-                    <input type="submit" name="botao" value="Editar" class="btn btn-primary"></input>
-                    <a href="relatorio.php" value="Cadastrar" class="btn btn-primary">Cancelar</a>
-                </div>
+                <input type="submit" name="botao" value="Editar" class="btn btn-primary"></input> <br>
+                <a href="relatorio.php" style="margin-top: 20px; text-align:center;" value="Cadastrar" class="">Voltar para relatorio</a>
             </form>
         </div>
     </section>
+    <?php
+    include('config.php');
+
+    if (@$_REQUEST['botao']) {
+        if (!$_POST['login'] == '') {
+            $login = $_POST['login'];
+        }
+        if (!$_POST['senha'] == '') {
+            $senha = $_POST['senha'];
+        }
+    }
+    ?>
 </body>
 <?php
 if (isset($_REQUEST['botao'])) {

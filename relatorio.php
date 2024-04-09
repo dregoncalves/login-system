@@ -11,9 +11,15 @@
 
 <body>
     <?php include('config.php') ?>
-    <div class="container mt-5">
+    <div class="container mt-5 text-center">
         <section class="vh-100">
-            <h1>Usuários</h1>
+            <div class="card text-center">
+                <div class="card-header"><h1>Usuarios</h1></div>
+                <div class="card-body d-block">
+                    <a href="menu.php" class="btn btn-primary">Menu</a>
+                    <a href="logout.php" class="btn btn-primary">Logout</a>
+                </div>
+            </div>
             <?php
             require('verifica.php');
             $query = "SELECT * FROM usuario";
@@ -39,8 +45,8 @@
                             <td><?php echo $row->senha; ?></td>
                             <td><?php echo $row->nivel; ?></td>
                             <td>
-                                <button onclick="location.href='?page=editar&id=<?php echo $row->id; ?>';" class="btn btn-primary btn-sm ">Editar</button>
-                                <button onclick="if(confirm('Tem certeza que deseja excluir?')){location.href='?page=salvar&acao=excluir&id=<?php echo $row->id ?>';}else{false;}" class="btn btn-danger btn-sm">Excluir</button>
+                                <a href='editar.php?id=<?php echo $row->id; ?>'" class="btn btn-primary btn-sm">Editar</a>
+                                <button onclick="if(confirm('Tem certeza que deseja excluir?')) { location.href='?excluir&id=<?php echo $row->id; ?>'; }" class="btn btn-danger btn-sm">Excluir</button>
                             </td>
                         </tr>
                     <?php
@@ -53,6 +59,20 @@
             }
             ?>
         </section>
+        <?php
+        if (isset($_REQUEST['excluir'])) {
+            $query = "DELETE FROM usuario WHERE id=" . $_REQUEST['id'];
+
+            $result = $con->query($query);
+
+            if ($result) {
+                echo "<script>alert('Excluído com sucesso!'); location.href='?page=listar';</script>";
+            } else {
+                echo "<script>alert('Erro ao excluir!'); location.href='?page=listar';</script>";
+            }
+        }
+        ?>
+    </div>
 </body>
 
 </html>

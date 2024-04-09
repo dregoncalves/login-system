@@ -10,7 +10,16 @@
 </head>
 
 <body>
-    <?php include('config.php') ?>
+
+    <?php
+    include('config.php');
+    #VERIFICAÇÃO PADRÃO PARA VER SE USUARIO É ADM
+    session_start();
+    if (!isset($_SESSION['id_usuario']) || $_SESSION['nivel_usuario'] !== 'ADM') {
+        header("Location: login.php");
+        exit;
+    }
+    ?>
     <div class="container mt-5 text-center">
         <section class="vh-100">
             <div class="card text-center">
@@ -21,7 +30,7 @@
                 </div>
             </div>
             <?php
-            require('verifica.php');
+            @require('verifica.php');
             $query = "SELECT * FROM usuario";
             $result = $con->query($query);
             $qtd = $result->num_rows;

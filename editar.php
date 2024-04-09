@@ -13,7 +13,7 @@
     <script src="main.js"></script>
     <?php
     include('config.php');
-    $query = "SELECT * FROM usuario WHERE id =" . $_REQUEST['id'];
+    $query = "SELECT * FROM usuario WHERE id =" . $_REQUEST['id'] . ";";
 
     $result = $con->query($query);
     $row = $result->fetch_object();
@@ -31,15 +31,42 @@
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">Senha</label>
-                    <input type="password" name="senha" class="form-control" value="<?php echo $row->md5('senha'); ?>">
+                    <input type="password" name="senha" class="form-control" value="<?php echo $row->senha; ?>">
                     <div id="passwordHelp" class="form-text">Sua senha nunca será compartilhada com outros.</div>
                 </div>
-                <input type="submit" name="botao" value="Cadastrar" class="btn btn-primary"></input>
-                <a href="login.php" value="Cadastrar" class="btn btn-primary">Fazer Login</a>
+                <div class="mb-3">
+                    <select class="form-control" id="exampleFormControlSelect1">
+                        <option selected>Nível</option>
+                        <option>ADM</option>
+                        <option>USER</option>
+                    </select>
+                </div>
+                <div class="text-center">
+                    <input type="submit" name="botao" value="Editar" class="btn btn-primary"></input>
+                    <a href="relatorio.php" value="Cadastrar" class="btn btn-primary">Cancelar</a>
+                </div>
             </form>
         </div>
-    </section> 
+    </section>
 </body>
+<?php
+if (isset($_REQUEST['botao'])) {
+    $login = $_POST['login'];
+    $senha = $_POST['senha'];
+    $nivel = $_POST['nivel'];
 
+    $query = "UPDATE usuario SET login='{$login}', senha='{$senha}', nivel='{$nivel}' WHERE id =" . $_REQUEST['id'];
+
+    $result = $con->query($query);
+
+    if ($result) {
+        echo "<script>alert('Editado com sucesso!');</script>";
+        echo "<script>location.href='relatorio.php';</script>";
+    } else {
+        echo "<script>alert('Erro ao editar !');</script>";
+        echo "<script>location.href='relatorio.php';</script>";
+    }
+}
+?>
 
 </html>

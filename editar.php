@@ -48,15 +48,23 @@
         </div>
     </section>
     <?php
-    include('config.php');
+    if (isset($_REQUEST['botao'])) {
+        $query_editar = "UPDATE usuario SET";
 
-    if (@$_REQUEST['botao']) {
-        if (!$_POST['login'] == '') {
+        if (!empty($_POST['login'])) {
             $login = $_POST['login'];
+            $query_editar .= " login = '$login',";
         }
-        if (!$_POST['senha'] == '') {
+
+        if (!empty($_POST['senha'])) {
             $senha = $_POST['senha'];
+            $senha = md5($senha);
+            $query_editar .= " senha = '$senha',";
         }
+
+        $query_editar = rtrim($query_editar, ',');
+        $query_editar .= " WHERE id = " . $_REQUEST['id'];
+        $result_editar = mysqli_query($con, $query_editar);
     }
     ?>
 </body>

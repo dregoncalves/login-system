@@ -12,10 +12,11 @@ body {
 
 .form {
     margin-top: 50px;
+    width: 500px;
 }
 
 form {
-    padding: 25px;
+    padding: 20px;
     border-radius: 20px;
     box-shadow: 0px 0px 50px 10px rgb(26, 26, 26, 0.2);
 }
@@ -30,4 +31,8 @@ a {
 
 a:hover {
     text-decoration: underline;
+}
+
+.img-suricato {
+    overflow: hidden;
 }

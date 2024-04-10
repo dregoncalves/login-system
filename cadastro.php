@@ -17,7 +17,10 @@
                 <div class="mb-3">
                     <h1 style="font-weight: 700; margin-top: 20px; margin-left: 10px; font-size: 20px; color: #0088ff;">Cadastrar</h1>
                     <h2 style="font-weight: 700; margin-left: 10px; font-size: 30px;">Crie uma conta pangaré 👇</h2>
-                    <img src="imgs/360_F_561584417_2mWFiThqNVkc869p5CJcsZwMaf4PdVvv.jpg" class="img-fluid" alt="..." style="border-radius: 20px; margin-top: 40px;">
+                    <div class="img-suricato">
+                        <img src="imgs/360_F_561584417_2mWFiThqNVkc869p5CJcsZwMaf4PdVvv.jpg" class="img-fluid" alt="..." style="border-radius: 20px; margin-top: 40px;">
+                    </div>
+
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Login</label>
@@ -29,7 +32,7 @@
                     <div id="passwordHelp" class="form-text">Sua senha nunca será compartilhada com outros.</div>
                 </div>
                 <input type="submit" name="botao" value="Cadastrar" class="btn btn-primary"></input> <br>
-                <a href="login.php" value="Cadastrar" class="loginbutton" >Fazer Login</a>
+                <a href="login.php" value="Cadastrar" class="loginbutton">Fazer Login</a>
             </form>
         </div>
     </section>

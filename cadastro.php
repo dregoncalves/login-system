@@ -15,7 +15,8 @@
         <div class="form">
             <form action="#" method="post">
                 <div class="mb-3">
-                    <h1 style="text-align: center; font-weight: 700; margin-top: 20px;">Cadastrar</h1>
+                    <h1 style="font-weight: 700; margin-top: 20px; margin-left: 10px; font-size: 20px; color: #0088ff;">Cadastrar</h1>
+                    <h2 style="font-weight: 700; margin-left: 10px; font-size: 30px;">Crie uma conta pangaré 👇</h2>
                     <img src="imgs/360_F_561584417_2mWFiThqNVkc869p5CJcsZwMaf4PdVvv.jpg" class="img-fluid" alt="..." style="border-radius: 20px; margin-top: 40px;">
                 </div>
                 <div class="mb-3">
@@ -27,8 +28,8 @@
                     <input type="password" name="senha" class="form-control" id="exampleInputPassword1">
                     <div id="passwordHelp" class="form-text">Sua senha nunca será compartilhada com outros.</div>
                 </div>
-                <input type="submit" name="botao" value="Cadastrar" class="btn btn-primary"></input>
-                <a href="login.php" value="Cadastrar" class="btn btn-primary">Fazer Login</a>
+                <input type="submit" name="botao" value="Cadastrar" class="btn btn-primary"></input> <br>
+                <a href="login.php" value="Cadastrar" class="loginbutton" >Fazer Login</a>
             </form>
         </div>
     </section>

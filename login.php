@@ -21,7 +21,7 @@ if (@$_REQUEST['botao']) {
         if ($niv == "USER" || $niv == "ADM") {
             header("Location: menu.php");
             exit;
-        } 
+        }
     }
 }
 ?>
@@ -60,6 +60,7 @@ if (@$_REQUEST['botao']) {
                                         <div class="form-outline mb-4">
                                             <label class="form-label" for="senha">Senha</label>
                                             <input type="password" id="senha" name="senha" class="form-control form-control-lg" />
+                                            <div id="passwordHelp" class="form-text">Sua senha nunca será compartilhada com outros.</div>
                                         </div>
 
                                         <div class="mb-4 d-flex ">
